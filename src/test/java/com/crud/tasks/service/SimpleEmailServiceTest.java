@@ -24,23 +24,23 @@ public class SimpleEmailServiceTest {
     @Test
     public void shouldSendEmail() {
         //Given
-        Mail mail = new Mail("test@test.com", "Test", "Test Message", null);
+        Mail mail = new Mail("test@test.com", "Test", "Test Message");
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
 
-        if(mail.getToCc() != null) {
-            mailMessage.setCc(mail.getToCc());
-        }
+//        if(mail.getToCc() != null) {
+//            mailMessage.setCc(mail.getToCc());
+//        }
 
         //When
         simpleEmailService.send(mail);
 
         //Then
         verify(javaMailSender, times(1)).send(mailMessage);
-        System.out.println(mail.getToCc());
+       // System.out.println(mail.getToCc());
     }
 
 }
