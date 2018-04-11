@@ -20,4 +20,9 @@ public class Task {
 
     @Column(name = "description")
     private String content;
+
+    public Task(final String title, final String content) {
+        this.title=title;
+        this.content=content;
+    }
 }
