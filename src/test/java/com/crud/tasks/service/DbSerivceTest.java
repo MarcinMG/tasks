@@ -26,11 +26,15 @@ public class DbSerivceTest {
     @Test
     public void testGetAllTasks(){
         //Given
-        long count = repository.count();
+        long countBefore = repository.count();
+        Task task1 = new Task("test1", "text1");
         //when
-        List<Task> taskList = dbService.getAllTasks();
+        dbService.saveTask(task1);
+        long countAfter = repository.count();
         //Then
-        assertEquals(count, taskList.size());
+        assertEquals(countBefore, countAfter-1);
+        //Clean up
+        dbService.deleteTask(task1.getId());
     }
 
     @Test
