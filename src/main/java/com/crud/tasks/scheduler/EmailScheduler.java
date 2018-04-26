@@ -18,9 +18,6 @@ public class EmailScheduler {
     private SimpleEmailService simpleEmailService;
 
     @Autowired
-    private MailCreatorService mailCreatorService;
-
-    @Autowired
     private TaskRepository taskRepository;
 
     @Autowired
